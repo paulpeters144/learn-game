@@ -2,7 +2,7 @@ import path from 'node:path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/game-template/',
+  base: '/learn-game/',
   resolve: {
     alias: {
       '~': path.resolve(__dirname, 'src'),

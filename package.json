@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
-	"homepage": "https://paulp-wao.github.io/learn-game/",
+	"homepage": "https://paulpeters144.github.io/learn-game/",
 	"scripts": {
 		"dev:web": "pnpm --filter client-web dev",
 		"test": "vitest",
