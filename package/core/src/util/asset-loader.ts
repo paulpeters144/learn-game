@@ -1,11 +1,13 @@
-import bunny_url from '@package/assets/images/bunny.png';
+import balaam_url from '@package/assets/images/balaam-donkey.png';
+import journey_bg_url from '@package/assets/images/journey-background.png';
 import * as PIXI from 'pixi.js';
 
 const assetMap = {
-  bunny: bunny_url,
+  balaam: balaam_url,
+  journeyBg: journey_bg_url,
 };
 
-export const assetFilePath = ['bunny'] as const;
+export const assetFilePath = ['balaam', 'journeyBg'] as const;
 export type AssetName = (typeof assetFilePath)[number];
 
 const assertNoMissingAssetName = () => {

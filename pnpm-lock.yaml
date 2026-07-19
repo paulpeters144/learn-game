@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@tweenjs/tween.js':
-        specifier: ^25.0.0
-        version: 25.0.0
       gh-pages:
         specifier: ^6.3.0
         version: 6.3.0

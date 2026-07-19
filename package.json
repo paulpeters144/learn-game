@@ -1,12 +1,11 @@
 {
-	"name": "game-template",
+	"name": "learn-game",
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
-	"homepage": "https://paulp-wao.github.io/game-template/",
+	"homepage": "https://paulp-wao.github.io/learn-game/",
 	"scripts": {
 		"dev:web": "pnpm --filter client-web dev",
-		"dev:desktop": "cd client/desktop && wails dev",
 		"test": "vitest",
 		"lint": "biome check .",
 		"lint:fix": "biome check --write --unsafe .",
@@ -17,7 +16,6 @@
 	"license": "ISC",
 	"packageManager": "pnpm@10.17.1",
 	"dependencies": {
-		"@tweenjs/tween.js": "^25.0.0",
 		"gh-pages": "^6.3.0",
 		"pixi-filters": "^6.1.5",
 		"pixi-viewport": "^6.0.3",
