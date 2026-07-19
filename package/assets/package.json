@@ -1,0 +1,10 @@
+{
+  "name": "@package/assets",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./fonts/*": "./fonts/*",
+    "./images/*": "./images/*"
+  }
+}

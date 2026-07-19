@@ -1,0 +1,5 @@
+packages:
+  - 'client/*'
+  - 'client/desktop/frontend'
+  - 'package/*'
+  - 'ecs'

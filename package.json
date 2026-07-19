@@ -1,0 +1,36 @@
+{
+	"name": "game-template",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"homepage": "https://paulp-wao.github.io/game-template/",
+	"scripts": {
+		"dev:web": "pnpm --filter client-web dev",
+		"dev:desktop": "cd client/desktop && wails dev",
+		"test": "vitest",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write --unsafe .",
+		"clean-modules": "node ./script/clean-modules.mjs"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.17.1",
+	"dependencies": {
+		"@tweenjs/tween.js": "^25.0.0",
+		"gh-pages": "^6.3.0",
+		"pixi-filters": "^6.1.5",
+		"pixi-viewport": "^6.0.3",
+		"pixi.js": "^8.14.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.3.10",
+		"@types/node": "^25.0.3",
+		"glob": "^13.0.0",
+		"happy-dom": "^20.0.11",
+		"js-yaml": "^4.1.1",
+		"typescript": "~5.9.3",
+		"vite": "^7.3.0",
+		"vitest": "^4.0.16"
+	}
+}

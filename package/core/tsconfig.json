@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@package/core/*": ["./src/*"],
+      "@package/core": ["./src/index.ts"],
+      "@package/ecs": ["../../package/ecs/index.ts"],
+      "@package/ecs/*": ["../../package/ecs/*"]
+    }
+  },
+  "include": ["src", "vite-env.d.ts", "../../package/ecs/*.ts"],
+}

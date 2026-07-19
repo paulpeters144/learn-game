@@ -1,0 +1,23 @@
+{
+  "name": "@package/core",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*"
+  },
+  "dependencies": {
+    "@package/assets": "workspace:*",
+    "@package/ecs": "workspace:*",
+    "@tweenjs/tween.js": "^25.0.0",
+    "pixi-filters": "^6.1.5",
+    "pixi-viewport": "^6.0.3",
+    "pixi.js": "^8.14.3"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vitest": "^4.0.16"
+  }
+}
