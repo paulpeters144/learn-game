@@ -5,6 +5,7 @@ import { WaterEntity } from '@package/core/entity/entity.water';
 import type { IScene } from '@package/core/scenes/scene-engine';
 import { createCameraUpdateSystem } from '@package/core/systems';
 import type { IDiContainer } from '@package/core/util/di-container';
+import { shuffle } from '@package/core/util/shuffle';
 import { tweenManager } from '@package/core/util/tween';
 
 interface Question {
@@ -13,55 +14,65 @@ interface Question {
   correctIndex: number;
 }
 
-const questions: Question[] = [
+let questions: Question[] = [
   {
-    text: 'What did the farmer go out to do?',
-    options: ['Plant seeds', 'Harvest wheat'],
+    text: 'What was the farmer dropping on the ground?',
+    options: ['Seeds', 'Candy'],
     correctIndex: 0,
   },
   {
-    text: 'What happened to the seeds that fell on the path?',
-    options: ['Birds ate them', 'They grew tall'],
+    text: "What do the seeds represent in Jesus' story?",
+    options: ["God's Word", 'Rocks'],
     correctIndex: 0,
   },
   {
-    text: 'What happened to the seeds on rocky ground?',
-    options: ['Sprang up but withered', 'Never sprouted'],
+    text: 'What is the dirt or soil supposed to be like in the story?',
+    options: ['Our hearts', 'Our shoes'],
     correctIndex: 0,
   },
   {
-    text: 'Why did the rocky ground plants wither?',
-    options: ['No deep roots', 'Too much water'],
+    text: 'What happened to the seeds that fell on the hard path?',
+    options: ['Birds ate them', 'Fish ate them'],
     correctIndex: 0,
   },
   {
-    text: 'What happened to the seeds among thorns?',
-    options: ['Thorns choked them', 'They grew strong'],
+    text: "Why couldn't the seeds grow on the rocky ground?",
+    options: ['There were too many bugs', "The soil wasn't deep enough for roots"],
+    correctIndex: 1,
+  },
+  {
+    text: "What dried up the plants on the rocky ground when they didn't have deep roots?",
+    options: ['The hot sun', 'Cold snow'],
     correctIndex: 0,
   },
   {
-    text: 'What happened to the seeds on good soil?',
-    options: ['Produced a great crop', 'Birds ate them'],
+    text: 'What kind of weeds choked the seeds?',
+    options: ['Pretty flowers', 'Prickly thorns'],
+    correctIndex: 1,
+  },
+  {
+    text: 'What kind of soil helped the seeds grow big and strong?',
+    options: ['Good, soft rich dirt', 'Hard, rocky dirt'],
     correctIndex: 0,
   },
   {
-    text: 'What does the seed represent in the parable?',
-    options: ["God's Word", 'Money'],
+    text: "What should we do when we hear God's Word?",
+    options: ['Listen with a good heart', 'Cover our ears'],
     correctIndex: 0,
   },
   {
-    text: 'What does the path represent?',
-    options: ["Those who don't understand", 'Those who obey'],
+    text: 'Which seed was the happiest and produced a big harvest?',
+    options: ['The seed on the path', 'The seed in the good soil'],
+    correctIndex: 1,
+  },
+  {
+    text: 'If our heart is like good soil, what kind of actions will grow in us?',
+    options: ['Kindness and love', 'Yelling and pushing'],
     correctIndex: 0,
   },
   {
-    text: 'What do the thorns represent?',
-    options: ['Worries and wealth', 'Friends and family'],
-    correctIndex: 0,
-  },
-  {
-    text: 'What does the good soil represent?',
-    options: ['Those who hear and obey', 'Those who are rich'],
+    text: 'Who told this parable?',
+    options: ['Jesus', 'A disciple'],
     correctIndex: 0,
   },
 ];
@@ -189,6 +200,8 @@ export const sowerScene = (di: IDiContainer): IScene => {
 
   return {
     load: async () => {
+      questions = shuffle(questions);
+
       const camera = new CameraEntity({ appRef, gameRef, gameConstants });
 
       await assetLoader.preload('vegBg', ...vegAssetNames);

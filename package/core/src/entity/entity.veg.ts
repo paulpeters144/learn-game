@@ -22,15 +22,32 @@ export class VegEntity extends Entity {
   }
 
   public growToStage(stage: number): void {
-    if (stage < 1 || stage > this.textures.length) return;
+    const mappings: { texIdx: number; scaleMul: number }[] = [
+      { texIdx: 0, scaleMul: 1.0 },
+      { texIdx: 1, scaleMul: 1.0 },
+      { texIdx: 2, scaleMul: 1.0 },
+      { texIdx: 3, scaleMul: 0.85 },
+      { texIdx: 3, scaleMul: 1.0 },
+      { texIdx: 4, scaleMul: 1.0 },
+      { texIdx: 5, scaleMul: 1.0 },
+      { texIdx: 6, scaleMul: 1.0 },
+      { texIdx: 7, scaleMul: 0.85 },
+      { texIdx: 7, scaleMul: 1.0 },
+      { texIdx: 8, scaleMul: 1.0 },
+      { texIdx: 9, scaleMul: 1.0 },
+    ];
 
+    if (stage < 1 || stage > mappings.length) return;
+
+    const mapping = mappings[stage - 1];
     this.currentStage = stage;
-    this.sprite.texture = this.textures[stage - 1];
+    this.sprite.texture = this.textures[mapping.texIdx];
     this.sprite.visible = true;
 
-    // Scale-in animation: pop from small to full size
+    const targetScale = this.baseScale * mapping.scaleMul;
+
     this.ctr.scale.set(0, 0);
-    tweenManager.to(0, this.baseScale, 500, Easing.QuadraticOut, (val) => {
+    tweenManager.to(0, targetScale, 500, Easing.QuadraticOut, (val) => {
       this.ctr.scale.set(val, val);
     });
   }

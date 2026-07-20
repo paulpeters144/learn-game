@@ -4,8 +4,9 @@ import { DonkeyEntity } from '@package/core/entity/entity.donkey';
 import type { IScene } from '@package/core/scenes/scene-engine';
 import { createCameraUpdateSystem } from '@package/core/systems';
 import type { IDiContainer } from '@package/core/util/di-container';
+import { shuffle } from '@package/core/util/shuffle';
 import { tweenManager } from '@package/core/util/tween';
-import { Container, Graphics } from 'pixi.js';
+import { type Container, Graphics } from 'pixi.js';
 
 interface Question {
   text: string;
@@ -13,7 +14,7 @@ interface Question {
   correctIndex: number;
 }
 
-const questions: Question[] = [
+let questions: Question[] = [
   {
     text: 'Who was Balaam?',
     options: ['A farmer', 'A prophet'],
@@ -66,10 +67,7 @@ const questions: Question[] = [
   },
 ];
 
-function debugDrawWaypoints(
-  path: { x: number; y: number }[],
-  parent: Container,
-): Graphics {
+function debugDrawWaypoints(path: { x: number; y: number }[], parent: Container): Graphics {
   const g = new Graphics();
   for (const point of path) {
     g.circle(point.x, point.y, 6);
@@ -193,6 +191,8 @@ export const simpleScene = (di: IDiContainer): IScene => {
 
   return {
     load: async () => {
+      questions = shuffle(questions);
+
       const camera = new CameraEntity({ appRef, gameRef, gameConstants });
 
       await assetLoader.preload('journeyBg', 'balaam');
