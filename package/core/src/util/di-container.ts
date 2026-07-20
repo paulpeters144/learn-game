@@ -1,6 +1,7 @@
 import { createSceneEngine, type ISceneEngine } from '@package/core/scenes/scene-engine';
 import { createEntityStore, createSystemAgg, type IEntityStore, type ISystemAgg } from '@package/ecs';
 import * as PIXI from 'pixi.js';
+import { createSoundManager, type ISoundManager } from '../services/service.sound';
 import { createAssetLoader, type IAssetLoader } from './asset-loader';
 import { createEventBus, type IEventBus } from './event-bus';
 import { getGameConstants, type IGameConstants } from './game.constants';
@@ -13,6 +14,7 @@ export interface IDiContainer {
   gameConstants: () => IGameConstants;
   gameRef: () => PIXI.Container;
   sceneEngine: () => ISceneEngine;
+  soundManager: () => ISoundManager;
   systemAgg: () => ISystemAgg;
 }
 
@@ -23,6 +25,7 @@ const diContainer = (): IDiContainer => {
   let _gameRef: PIXI.Container | undefined;
   let _assetLoader: IAssetLoader | undefined;
   let _sceneEngine: ISceneEngine | undefined;
+  let _soundManager: ISoundManager | undefined;
   let _systemAgg: ISystemAgg | undefined;
 
   const appRef = () => {
@@ -69,6 +72,13 @@ const diContainer = (): IDiContainer => {
     return _sceneEngine;
   };
 
+  const soundManager = () => {
+    if (!_soundManager) {
+      _soundManager = createSoundManager(eventBus());
+    }
+    return _soundManager;
+  };
+
   const systemAgg = () => {
     if (!_systemAgg) {
       _systemAgg = createSystemAgg();
@@ -84,6 +94,7 @@ const diContainer = (): IDiContainer => {
     gameConstants,
     gameRef,
     sceneEngine,
+    soundManager,
     systemAgg,
   };
 };

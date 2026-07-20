@@ -72,6 +72,7 @@ export const sowerScene = (di: IDiContainer): IScene => {
   const appRef = di.appRef();
   const assetLoader = di.assetLoader();
   const entityStore = di.entityStore();
+  const eventBus = di.eventBus();
   const gameConstants = di.gameConstants();
   const gameRef = di.gameRef();
   const systemAgg = di.systemAgg();
@@ -120,10 +121,14 @@ export const sowerScene = (di: IDiContainer): IScene => {
 
       currentQuestionIndex++;
 
+      eventBus.fire('sfx:play', { id: 'correct' });
+
       if (waterEntity && vegEntity) {
         waterEntity.pour({ x: 320, y: 280 });
+        eventBus.fire('sfx:play', { id: 'water' });
         setTimeout(() => {
           vegEntity?.growToStage(currentQuestionIndex);
+          eventBus.fire('sfx:play', { id: 'grow' });
         }, 500);
       }
 
@@ -136,8 +141,11 @@ export const sowerScene = (di: IDiContainer): IScene => {
         feedback.className = 'feedback-box feedback-wrong';
       }
 
+      eventBus.fire('sfx:play', { id: 'wrong' });
+
       if (vegEntity) {
         vegEntity.wilt();
+        eventBus.fire('sfx:play', { id: 'wilt' });
       }
     }
   };
@@ -146,6 +154,8 @@ export const sowerScene = (di: IDiContainer): IScene => {
     const uiLayer = document.getElementById('ui-layer');
     const victoryScreen = document.getElementById('victory-screen');
     const victorySubtext = document.getElementById('victory-subtext');
+
+    eventBus.fire('sfx:play', { id: 'victory' });
 
     if (victorySubtext) {
       victorySubtext.innerText = 'The seed fell on good soil and produced a crop!';
@@ -161,13 +171,19 @@ export const sowerScene = (di: IDiContainer): IScene => {
     if (btnA) {
       const newBtnA = btnA.cloneNode(true) as HTMLElement;
       btnA.parentNode?.replaceChild(newBtnA, btnA);
-      newBtnA.addEventListener('pointerdown', () => handleAnswer(0));
+      newBtnA.addEventListener('pointerdown', () => {
+        eventBus.fire('sfx:play', { id: 'click' });
+        handleAnswer(0);
+      });
     }
 
     if (btnB) {
       const newBtnB = btnB.cloneNode(true) as HTMLElement;
       btnB.parentNode?.replaceChild(newBtnB, btnB);
-      newBtnB.addEventListener('pointerdown', () => handleAnswer(1));
+      newBtnB.addEventListener('pointerdown', () => {
+        eventBus.fire('sfx:play', { id: 'click' });
+        handleAnswer(1);
+      });
     }
   };
 

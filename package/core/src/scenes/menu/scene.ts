@@ -12,6 +12,7 @@ export const menuScene = (di: IDiContainer): IScene => {
       const newBtn = btnBalaam.cloneNode(true) as HTMLElement;
       btnBalaam.parentNode?.replaceChild(newBtn, btnBalaam);
       newBtn.addEventListener('pointerdown', () => {
+        di.eventBus().fire('sfx:play', { id: 'click' });
         hideAllUI();
         di.sceneEngine().next(() => simpleScene(di));
       });
@@ -21,6 +22,7 @@ export const menuScene = (di: IDiContainer): IScene => {
       const newBtn = btnSower.cloneNode(true) as HTMLElement;
       btnSower.parentNode?.replaceChild(newBtn, btnSower);
       newBtn.addEventListener('pointerdown', () => {
+        di.eventBus().fire('sfx:play', { id: 'click' });
         hideAllUI();
         di.sceneEngine().next(() => sowerScene(di));
       });

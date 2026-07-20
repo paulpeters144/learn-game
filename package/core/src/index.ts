@@ -14,6 +14,8 @@ export const createEngine = async (props: { canvas: HTMLCanvasElement }) => {
       canvas: canvas,
     });
 
+    di.soundManager();
+
     const sceneEngine = di.sceneEngine();
 
     sceneEngine.next(() => menuScene(di));

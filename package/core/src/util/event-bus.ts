@@ -14,8 +14,10 @@ export interface IEventBus {
   clear: () => void;
 }
 
+export type SfxId = 'click' | 'correct' | 'wrong' | 'walk' | 'water' | 'grow' | 'wilt' | 'victory' | 'bray';
+
 export type EventMap = {
-  eventName: { count: number };
+  'sfx:play': { id: SfxId };
   camShake: {
     duration?: number;
     magnitude?: number;

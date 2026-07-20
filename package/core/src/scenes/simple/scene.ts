@@ -69,6 +69,7 @@ export const simpleScene = (di: IDiContainer): IScene => {
   const appRef = di.appRef();
   const assetLoader = di.assetLoader();
   const entityStore = di.entityStore();
+  const eventBus = di.eventBus();
   const gameConstants = di.gameConstants();
   const gameRef = di.gameRef();
   const systemAgg = di.systemAgg();
@@ -109,7 +110,6 @@ export const simpleScene = (di: IDiContainer): IScene => {
     const feedback = document.getElementById('feedback-text');
 
     if (index === q.correctIndex) {
-      // Correct!
       isTransitioning = true;
       if (feedback) {
         feedback.innerText = 'Correct!';
@@ -119,19 +119,24 @@ export const simpleScene = (di: IDiContainer): IScene => {
       currentQuestionIndex++;
       const progress = currentQuestionIndex / questions.length;
 
+      eventBus.fire('sfx:play', { id: 'correct' });
+
       if (donkeyEntity) {
         donkeyEntity.setProgress(progress);
+        eventBus.fire('sfx:play', { id: 'walk' });
       }
 
       setTimeout(() => {
         updateUI();
       }, 1500);
     } else {
-      // Wrong!
       if (feedback) {
         feedback.innerText = "The donkey yells: 'What have I done to you?!'";
         feedback.className = 'feedback-box feedback-wrong';
       }
+
+      eventBus.fire('sfx:play', { id: 'wrong' });
+      eventBus.fire('sfx:play', { id: 'bray' });
 
       if (donkeyEntity) {
         donkeyEntity.shake();
@@ -144,6 +149,8 @@ export const simpleScene = (di: IDiContainer): IScene => {
     const victoryScreen = document.getElementById('victory-screen');
     const victorySubtext = document.getElementById('victory-subtext');
 
+    eventBus.fire('sfx:play', { id: 'victory' });
+
     if (victorySubtext) {
       victorySubtext.innerText = 'You made it to the Plains of Moab!';
     }
@@ -155,17 +162,22 @@ export const simpleScene = (di: IDiContainer): IScene => {
     const btnA = document.getElementById('btn-a');
     const btnB = document.getElementById('btn-b');
 
-    // Remove existing event listeners safely
     if (btnA) {
       const newBtnA = btnA.cloneNode(true) as HTMLElement;
       btnA.parentNode?.replaceChild(newBtnA, btnA);
-      newBtnA.addEventListener('pointerdown', () => handleAnswer(0));
+      newBtnA.addEventListener('pointerdown', () => {
+        eventBus.fire('sfx:play', { id: 'click' });
+        handleAnswer(0);
+      });
     }
 
     if (btnB) {
       const newBtnB = btnB.cloneNode(true) as HTMLElement;
       btnB.parentNode?.replaceChild(newBtnB, btnB);
-      newBtnB.addEventListener('pointerdown', () => handleAnswer(1));
+      newBtnB.addEventListener('pointerdown', () => {
+        eventBus.fire('sfx:play', { id: 'click' });
+        handleAnswer(1);
+      });
     }
   };
 
