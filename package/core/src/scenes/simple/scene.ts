@@ -130,11 +130,6 @@ export const simpleScene = (di: IDiContainer): IScene => {
         updateUI();
       }, 1500);
     } else {
-      if (feedback) {
-        feedback.innerText = "The donkey yells: 'What have I done to you?!'";
-        feedback.className = 'feedback-box feedback-wrong';
-      }
-
       eventBus.fire('sfx:play', { id: 'wrong' });
       eventBus.fire('sfx:play', { id: 'bray' });
 
