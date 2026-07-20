@@ -1,4 +1,4 @@
-import { simpleScene } from '@package/core/scenes/simple/scene';
+import { menuScene } from '@package/core/scenes/menu/scene';
 import { createDiContainer } from '@package/core/util/di-container';
 
 export const createEngine = async (props: { canvas: HTMLCanvasElement }) => {
@@ -16,7 +16,7 @@ export const createEngine = async (props: { canvas: HTMLCanvasElement }) => {
 
     const sceneEngine = di.sceneEngine();
 
-    sceneEngine.next(() => simpleScene(di));
+    sceneEngine.next(() => menuScene(di));
   } catch (error) {
     console.error(error);
   }
