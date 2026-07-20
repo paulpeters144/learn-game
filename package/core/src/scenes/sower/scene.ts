@@ -135,7 +135,7 @@ export const sowerScene = (di: IDiContainer): IScene => {
       eventBus.fire('sfx:play', { id: 'correct' });
 
       if (waterEntity && vegEntity) {
-        waterEntity.pour({ x: 320, y: 280 });
+        waterEntity.pour({ x: 320, y: 260 });
         eventBus.fire('sfx:play', { id: 'water' });
         setTimeout(() => {
           vegEntity?.growToStage(currentQuestionIndex);
@@ -221,7 +221,7 @@ export const sowerScene = (di: IDiContainer): IScene => {
 
       // Veg entity — positioned on the dirt field area of the background
       const vegTextures = vegAssetNames.map((name) => assetLoader.getTexture(name));
-      vegEntity = new VegEntity(vegTextures, { x: 320, y: 300, scale: 0.5 });
+      vegEntity = new VegEntity(vegTextures, { x: 320, y: 280, scale: 0.5 });
 
       // Water entity
       waterEntity = new WaterEntity();
