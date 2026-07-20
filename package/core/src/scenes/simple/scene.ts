@@ -5,6 +5,7 @@ import type { IScene } from '@package/core/scenes/scene-engine';
 import { createCameraUpdateSystem } from '@package/core/systems';
 import type { IDiContainer } from '@package/core/util/di-container';
 import { tweenManager } from '@package/core/util/tween';
+import { Container, Graphics } from 'pixi.js';
 
 interface Question {
   text: string;
@@ -65,6 +66,19 @@ const questions: Question[] = [
   },
 ];
 
+function debugDrawWaypoints(
+  path: { x: number; y: number }[],
+  parent: Container,
+): Graphics {
+  const g = new Graphics();
+  for (const point of path) {
+    g.circle(point.x, point.y, 6);
+    g.fill({ color: 0xff0000 });
+  }
+  parent.addChild(g);
+  return g;
+}
+
 export const simpleScene = (di: IDiContainer): IScene => {
   const appRef = di.appRef();
   const assetLoader = di.assetLoader();
@@ -76,6 +90,7 @@ export const simpleScene = (di: IDiContainer): IScene => {
 
   let currentQuestionIndex = 0;
   let donkeyEntity: DonkeyEntity | null = null;
+  let waypointGraphics: Graphics | null = null;
   let isTransitioning = false;
 
   const updateUI = () => {
@@ -219,6 +234,8 @@ export const simpleScene = (di: IDiContainer): IScene => {
       entityStore.add(background);
       entityStore.add(donkeyEntity);
 
+      waypointGraphics = debugDrawWaypoints(journeyPath, gameRef);
+
       // Only need the camera update system
       systemAgg.add(createCameraUpdateSystem(di));
 
@@ -237,6 +254,11 @@ export const simpleScene = (di: IDiContainer): IScene => {
       tweenManager.update(performance.now());
     },
 
-    dispose: () => {},
+    dispose: () => {
+      if (waypointGraphics && gameRef) {
+        waypointGraphics.destroy();
+        waypointGraphics = null;
+      }
+    },
   };
 };
