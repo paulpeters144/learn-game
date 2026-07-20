@@ -44,7 +44,8 @@ export class VegEntity extends Entity {
     this.sprite.texture = this.textures[mapping.texIdx];
     this.sprite.visible = true;
 
-    const targetScale = this.baseScale * mapping.scaleMul;
+    const vegScaleMul = 1 + 0.03 * (mapping.texIdx + 1);
+    const targetScale = this.baseScale * mapping.scaleMul * vegScaleMul;
 
     this.ctr.scale.set(0, 0);
     tweenManager.to(0, targetScale, 500, Easing.QuadraticOut, (val) => {
