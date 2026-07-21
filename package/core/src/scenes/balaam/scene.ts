@@ -255,7 +255,8 @@ export const balaamScene = (di: IDiContainer): IScene => {
 
       const journeyPath = [
         { x: 140, y: 100 },
-        { x: 190, y: 115 },
+        { x: 170, y: 110 },
+        { x: 200, y: 115 },
         { x: 230, y: 115 },
         { x: 265, y: 125 },
         { x: 285, y: 150 },
