@@ -1,7 +1,7 @@
+import { balaamScene } from '@package/core/scenes/balaam/scene';
 import type { IScene } from '@package/core/scenes/scene-engine';
 import { sowerScene } from '@package/core/scenes/sower/scene';
 import type { IDiContainer } from '@package/core/util/di-container';
-import { balaamScene } from '@package/core/scenes/balaam/scene';
 
 export const menuScene = (di: IDiContainer): IScene => {
   const setupMenuEvents = () => {
