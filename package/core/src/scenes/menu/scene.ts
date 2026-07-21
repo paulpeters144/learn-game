@@ -1,7 +1,7 @@
 import type { IScene } from '@package/core/scenes/scene-engine';
-import { simpleScene } from '@package/core/scenes/simple/scene';
 import { sowerScene } from '@package/core/scenes/sower/scene';
 import type { IDiContainer } from '@package/core/util/di-container';
+import { balaamScene } from '@package/core/scenes/balaam/scene';
 
 export const menuScene = (di: IDiContainer): IScene => {
   const setupMenuEvents = () => {
@@ -14,7 +14,7 @@ export const menuScene = (di: IDiContainer): IScene => {
       newBtn.addEventListener('pointerdown', () => {
         di.eventBus().fire('sfx:play', { id: 'click' });
         hideAllUI();
-        di.sceneEngine().next(() => simpleScene(di));
+        di.sceneEngine().next(() => balaamScene(di));
       });
     }
 

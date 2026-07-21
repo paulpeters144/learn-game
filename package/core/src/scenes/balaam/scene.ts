@@ -77,7 +77,7 @@ function debugDrawWaypoints(path: { x: number; y: number }[], parent: Container)
   return g;
 }
 
-export const simpleScene = (di: IDiContainer): IScene => {
+export const balaamScene = (di: IDiContainer): IScene => {
   const appRef = di.appRef();
   const assetLoader = di.assetLoader();
   const entityStore = di.entityStore();
@@ -215,16 +215,22 @@ export const simpleScene = (di: IDiContainer): IScene => {
 
       const journeyPath = [
         { x: 140, y: 100 },
-        { x: 200, y: 120 },
-        { x: 270, y: 140 },
-        { x: 330, y: 135 },
-        { x: 375, y: 150 },
-        { x: 350, y: 195 },
-        { x: 280, y: 220 },
-        { x: 220, y: 245 },
-        { x: 250, y: 275 },
-        { x: 340, y: 285 },
-        { x: 440, y: 290 },
+        { x: 190, y: 115 },
+        { x: 230, y: 115 },
+        { x: 265, y: 125 },
+        { x: 285, y: 150 },
+        { x: 300, y: 165 },
+        { x: 280, y: 190 },
+        { x: 250, y: 200 },
+        { x: 225, y: 215 },
+        { x: 215, y: 245 },
+        { x: 235, y: 265 },
+        { x: 260, y: 275 },
+        { x: 285, y: 280 },
+        { x: 310, y: 285 },
+        { x: 335, y: 290 },
+        { x: 355, y: 290 },
+        { x: 425, y: 290 },
       ];
 
       const donkeySprite = assetLoader.createSprite('balaam');
