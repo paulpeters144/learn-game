@@ -6,6 +6,8 @@ export const createEngine = async (props: { canvas: HTMLCanvasElement }) => {
   const di = createDiContainer();
 
   try {
+    canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+
     await di.appRef().init({
       backgroundColor: '#000000',
       resolution: 1,
