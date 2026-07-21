@@ -65,6 +65,46 @@ let questions: Question[] = [
     options: ['Blessed them', 'Cursed them'],
     correctIndex: 0,
   },
+  {
+    text: 'Where was Balaam going?',
+    options: ['To the Plains of Moab', 'To Egypt'],
+    correctIndex: 0,
+  },
+  {
+    text: 'What did the angel have in its hand?',
+    options: ['A sword', 'A staff'],
+    correctIndex: 0,
+  },
+  {
+    text: 'Why did the donkey lie down?',
+    options: ['It was tired', 'It saw the angel'],
+    correctIndex: 1,
+  },
+  {
+    text: 'What did God open to let Balaam see?',
+    options: ['His eyes', 'His ears'],
+    correctIndex: 0,
+  },
+  {
+    text: 'How many times did Balaam hit the donkey?',
+    options: ['Three times', 'Once'],
+    correctIndex: 0,
+  },
+  {
+    text: 'What did the donkey say to Balaam?',
+    options: ['Why did you hit me?', 'Where are we going?'],
+    correctIndex: 0,
+  },
+  {
+    text: 'Did God allow Balaam to go with the men?',
+    options: ['Yes, but with conditions', 'No, never'],
+    correctIndex: 0,
+  },
+  {
+    text: 'What did Balaam do when he saw the angel?',
+    options: ['Ran away', 'Bowed down'],
+    correctIndex: 1,
+  },
 ];
 
 function debugDrawWaypoints(path: { x: number; y: number }[], parent: Container): Graphics {
@@ -230,6 +270,7 @@ export const balaamScene = (di: IDiContainer): IScene => {
         { x: 310, y: 285 },
         { x: 335, y: 290 },
         { x: 355, y: 290 },
+        { x: 390, y: 290 },
         { x: 425, y: 290 },
       ];
 
