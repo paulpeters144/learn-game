@@ -6,7 +6,6 @@ import { createCameraUpdateSystem } from '@package/core/systems';
 import type { IDiContainer } from '@package/core/util/di-container';
 import { shuffle } from '@package/core/util/shuffle';
 import { tweenManager } from '@package/core/util/tween';
-import { type Container, Graphics } from 'pixi.js';
 
 interface Question {
   text: string;
@@ -86,7 +85,7 @@ let questions: Question[] = [
     correctIndex: 1,
   },
   {
-    text: 'Can wanting stuff too much make us disobey?',
+    text: 'Can wanting too much stuff make us disobey?',
     options: ['No', 'Yes'],
     correctIndex: 1,
   },
@@ -107,16 +106,6 @@ let questions: Question[] = [
   },
 ];
 
-function debugDrawWaypoints(path: { x: number; y: number }[], parent: Container): Graphics {
-  const g = new Graphics();
-  for (const point of path) {
-    g.circle(point.x, point.y, 6);
-    g.fill({ color: 0xff0000 });
-  }
-  parent.addChild(g);
-  return g;
-}
-
 export const balaamScene = (di: IDiContainer): IScene => {
   const appRef = di.appRef();
   const assetLoader = di.assetLoader();
@@ -128,7 +117,6 @@ export const balaamScene = (di: IDiContainer): IScene => {
 
   let currentQuestionIndex = 0;
   let donkeyEntity: DonkeyEntity | null = null;
-  let waypointGraphics: Graphics | null = null;
   let isTransitioning = false;
 
   const updateUI = () => {
@@ -282,8 +270,6 @@ export const balaamScene = (di: IDiContainer): IScene => {
       entityStore.add(background);
       entityStore.add(donkeyEntity);
 
-      waypointGraphics = debugDrawWaypoints(journeyPath, gameRef);
-
       // Only need the camera update system
       systemAgg.add(createCameraUpdateSystem(di));
 
@@ -302,11 +288,6 @@ export const balaamScene = (di: IDiContainer): IScene => {
       tweenManager.update(performance.now());
     },
 
-    dispose: () => {
-      if (waypointGraphics && gameRef) {
-        waypointGraphics.destroy();
-        waypointGraphics = null;
-      }
-    },
+    dispose: () => {},
   };
 };
