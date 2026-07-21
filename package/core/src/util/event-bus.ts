@@ -14,7 +14,7 @@ export interface IEventBus {
   clear: () => void;
 }
 
-export type SfxId = 'click' | 'correct' | 'wrong' | 'walk' | 'water' | 'grow' | 'wilt' | 'victory' | 'bray';
+export type SfxId = 'click' | 'correct' | 'wrong' | 'walk' | 'water' | 'grow' | 'wilt' | 'victory' | 'bray' | 'baa';
 
 export type EventMap = {
   'sfx:play': { id: SfxId };

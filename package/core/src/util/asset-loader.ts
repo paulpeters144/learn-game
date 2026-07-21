@@ -1,5 +1,8 @@
 import balaam_url from '@package/assets/images/balaam-donkey.png';
 import journey_bg_url from '@package/assets/images/journey-background.png';
+import sheep_url from '@package/assets/images/sheppard/sheep.png';
+import shepard_url from '@package/assets/images/sheppard/shepard.png';
+import shepard_bg_url from '@package/assets/images/sheppard/shepard-bg.png';
 import veg_1_url from '@package/assets/images/sower/veg-1.png';
 import veg_2_url from '@package/assets/images/sower/veg-2.png';
 import veg_3_url from '@package/assets/images/sower/veg-3.png';
@@ -27,6 +30,9 @@ const assetMap = {
   veg8: veg_8_url,
   veg9: veg_9_url,
   veg10: veg_10_url,
+  shepard: shepard_url,
+  shepardBg: shepard_bg_url,
+  sheep: sheep_url,
 };
 
 export const assetFilePath = [
@@ -43,6 +49,9 @@ export const assetFilePath = [
   'veg8',
   'veg9',
   'veg10',
+  'shepard',
+  'shepardBg',
+  'sheep',
 ] as const;
 export type AssetName = (typeof assetFilePath)[number];
 

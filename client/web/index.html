@@ -52,6 +52,11 @@
               z-index: 10;
               display: none;
             }
+
+            #question-area {
+              display: flex;
+              flex-direction: column;
+            }
             
             .question-box {
               background: rgba(255, 255, 255, 0.9);
@@ -85,6 +90,22 @@
 
             .feedback-wrong {
               color: #F44336;
+            }
+
+            #sheep-counter {
+              background: rgba(255, 255, 255, 0.85);
+              border: 3px solid #4a3b2c;
+              border-radius: 12px;
+              padding: 0.5rem 1.5rem;
+              text-align: center;
+              font-size: 1.9rem;
+              color: #333;
+              box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+              font-family: 'Fredoka', sans-serif;
+              font-weight: 500;
+              margin-top: 0.5rem;
+              align-self: flex-start;
+              display: none;
             }
             
             .buttons-container {
@@ -196,7 +217,10 @@
             <canvas id="game"></canvas>
             
             <div id="ui-layer">
-              <div id="question-text" class="question-box">Question goes here?</div>
+              <div id="question-area">
+                <div id="question-text" class="question-box">Question goes here?</div>
+                <div id="sheep-counter">Sheep to find: 10</div>
+              </div>
               
               <div id="feedback-text" class="feedback-box"></div>
               
@@ -210,6 +234,7 @@
               <div class="menu-title">Choose a Game</div>
               <button id="btn-balaam" class="menu-btn">Balaam and the Donkey</button>
               <button id="btn-sower" class="menu-btn">Parable of the Sower</button>
+              <button id="btn-lost-sheep" class="menu-btn">The Lost Sheep</button>
             </div>
 
             <div id="victory-screen">

@@ -204,6 +204,13 @@ export const createSoundManager = (eventBus: IEventBus): ISoundManager => {
     lfo.stop(now + 1.0);
   };
 
+  const playBaa = (c: AudioContext) => {
+    const now = c.currentTime;
+    // Gentle two-note rising bleat — like a happy sheep
+    note(c, 440, now, 0.15, 'sine', 0.2, c.destination);
+    note(c, 554, now + 0.1, 0.2, 'sine', 0.2, c.destination);
+  };
+
   const playVictory = (c: AudioContext) => {
     const now = c.currentTime;
 
@@ -346,6 +353,9 @@ export const createSoundManager = (eventBus: IEventBus): ISoundManager => {
         break;
       case 'bray':
         playBray(c);
+        break;
+      case 'baa':
+        playBaa(c);
         break;
     }
   };
