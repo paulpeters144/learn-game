@@ -17,8 +17,8 @@ interface Question {
 let questions: Question[] = [
   {
     text: 'Who came to hear Jesus?',
-    options: ['Tax collectors', 'Grumpy leaders'],
-    correctIndex: 0,
+    options: ['Grumpy leaders', 'Tax collectors'],
+    correctIndex: 1,
   },
   {
     text: 'How many sheep did the man have?',
@@ -27,38 +27,38 @@ let questions: Question[] = [
   },
   {
     text: 'How many sheep got lost?',
-    options: ['One sheep', 'Ten sheep'],
-    correctIndex: 0,
+    options: ['Ten sheep', 'One sheep'],
+    correctIndex: 1,
   },
   {
     text: 'Where did the man leave the ninety-nine?',
-    options: ['The open field', 'A locked barn'],
-    correctIndex: 0,
+    options: ['A locked barn', 'The open field'],
+    correctIndex: 1,
   },
   {
     text: 'Did the shepherd care about the sheep?',
-    options: ['Yes', 'No'],
-    correctIndex: 0,
+    options: ['No', 'Yes'],
+    correctIndex: 1,
   },
   {
     text: 'Did the man give up looking?',
-    options: ['No, he searched', 'Yes he quit'],
-    correctIndex: 0,
+    options: ['Yes he quit', 'No, he searched'],
+    correctIndex: 1,
   },
   {
     text: 'How did he carry the found sheep?',
-    options: ['On his shoulders', 'In a wagon'],
-    correctIndex: 0,
+    options: ['In a wagon', 'On his shoulders'],
+    correctIndex: 1,
   },
   {
     text: 'How did the man feel when he found his sheep?',
-    options: ['Very happy', 'Very mad'],
-    correctIndex: 0,
+    options: ['Very mad', 'Very happy'],
+    correctIndex: 1,
   },
   {
     text: 'Where did he take the sheep?',
-    options: ['Back home', 'The dark woods'],
-    correctIndex: 0,
+    options: ['The dark woods', 'Back home'],
+    correctIndex: 1,
   },
   {
     text: 'Who did the man call together?',
