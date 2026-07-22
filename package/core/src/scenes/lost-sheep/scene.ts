@@ -51,7 +51,7 @@ let questions: Question[] = [
     correctIndex: 0,
   },
   {
-    text: 'How did the man feel when he found it?',
+    text: 'How did the man feel when he found his sheep?',
     options: ['Very happy', 'Very mad'],
     correctIndex: 0,
   },
