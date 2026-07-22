@@ -16,58 +16,98 @@ interface Question {
 
 let questions: Question[] = [
   {
-    text: 'Who told the story of the lost sheep?',
-    options: ['Jesus', 'Moses'],
+    text: 'Who came to hear Jesus?',
+    options: ['Tax collectors', 'Grumpy leaders'],
     correctIndex: 0,
   },
   {
-    text: 'How many sheep did the shepherd have?',
-    options: ['Fifty', 'One hundred'],
+    text: 'How many sheep did the man have?',
+    options: ['Ten sheep', 'One hundred sheep'],
     correctIndex: 1,
   },
   {
     text: 'How many sheep got lost?',
-    options: ['One', 'Ten'],
+    options: ['One sheep', 'Ten sheep'],
     correctIndex: 0,
   },
   {
-    text: 'What did the shepherd do when one sheep was lost?',
-    options: ['Left the 99 to find it', 'Went to sleep'],
+    text: 'Where did the man leave the ninety-nine?',
+    options: ['The open field', 'A locked barn'],
     correctIndex: 0,
   },
   {
-    text: 'Where did the shepherd look for the lost sheep?',
-    options: ['In the hills and valleys', 'In the city'],
+    text: 'Did the shepherd care about the sheep?',
+    options: ['Yes', 'No'],
     correctIndex: 0,
   },
   {
-    text: 'When the shepherd found the sheep, what did he do?',
-    options: ['Put it on his shoulders', 'Left it there'],
+    text: 'Did the man give up looking?',
+    options: ['No, he searched', 'Yes he quit'],
     correctIndex: 0,
   },
   {
-    text: 'How did the shepherd feel when he found the sheep?',
-    options: ['Very angry', 'Very happy'],
-    correctIndex: 1,
+    text: 'How did he carry the found sheep?',
+    options: ['On his shoulders', 'In a wagon'],
+    correctIndex: 0,
   },
   {
-    text: 'What did the shepherd do when he got home?',
-    options: ['Called his friends to celebrate', 'Went to bed'],
+    text: 'How did the man feel when he found it?',
+    options: ['Very happy', 'Very mad'],
+    correctIndex: 0,
+  },
+  {
+    text: 'Where did he take the sheep?',
+    options: ['Back home', 'The dark woods'],
+    correctIndex: 0,
+  },
+  {
+    text: 'Who did the man call together?',
+    options: ['Friends and neighbors', 'Nobody at all'],
+    correctIndex: 0,
+  },
+  {
+    text: 'What did he say to his friends?',
+    options: ['Rejoice with me', 'Please go away'],
+    correctIndex: 0,
+  },
+  {
+    text: 'How many sheep did NOT need help?',
+    options: ['Ninety-nine', 'Only five'],
+    correctIndex: 0,
+  },
+  {
+    text: 'What happens in heaven when someone comes back to God?',
+    options: ['There is joy', 'Nothing at all'],
+    correctIndex: 0,
+  },
+  {
+    text: 'Who is the shepherd like?',
+    options: ['God', 'A bad king'],
     correctIndex: 0,
   },
   {
     text: 'Who is the lost sheep like?',
-    options: ['Animals in the zoo', 'People who are far from God'],
-    correctIndex: 1,
+    options: ['A lost sinner', 'Perfect people'],
+    correctIndex: 0,
   },
   {
-    text: 'What makes God very happy?',
-    options: ['When someone lost is found', 'When we eat candy'],
+    text: 'Who was grumpy at Jesus?',
+    options: ['The grumpy leaders', 'The tax collectors'],
+    correctIndex: 0,
+  },
+  {
+    text: 'Why did Jesus tell this story?',
+    options: ['God loves us', 'To scare people'],
+    correctIndex: 0,
+  },
+  {
+    text: 'Is God happy when we come back to him?',
+    options: ['Yes, very happy', 'No, not really'],
     correctIndex: 0,
   },
 ];
 
-const TOTAL_SHEEP = 10;
+const TOTAL_SHEEP = 18;
 
 const herdPositions = [
   { x: 60, y: 230 },
@@ -80,6 +120,14 @@ const herdPositions = [
   { x: 170, y: 260 },
   { x: 90, y: 290 },
   { x: 150, y: 280 },
+  { x: 70, y: 250 },
+  { x: 130, y: 270 },
+  { x: 110, y: 230 },
+  { x: 40, y: 250 },
+  { x: 180, y: 300 },
+  { x: 100, y: 300 },
+  { x: 190, y: 250 },
+  { x: 160, y: 310 },
 ];
 
 export const lostSheepScene = (di: IDiContainer): IScene => {
